@@ -4,6 +4,7 @@ import Home from './component/home/Home';
 import ItemDetails from './component/details/ItemDetails';
 import CheckOutLayout from './component/checkout/CheckOutLayout';
 import Confirmation from './component/checkout/Confirmation';
+import Navbar from './component/global/Navbar';
 
 
 
@@ -21,6 +22,7 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
+      <Navbar />
         <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home />} />

@@ -37,18 +37,18 @@ export const style = {
 export const theme = createTheme({
     palette: {
         primary: {
-            main: style.primary[500]
+            main: style.primary[400],
         },
 
         secondary: {
-            main: style.secondary[500]
+            main: style.secondary[500],
         },
 
         amber: {
             dark: style.amber[700],
             main: style.amber[500],
             light: style.amber[100],
-        }
+        },
     },
 
     typography: {
@@ -72,9 +72,9 @@ export const theme = createTheme({
         h4: {
             fontFamily: ["Cinzel", "Sans-serif"].join(","),
             fontSize: 14,
-        }
-    }
-})
+        },
+    },
+});
 
 
 
