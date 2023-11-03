@@ -5,6 +5,7 @@ import ItemDetails from './component/details/ItemDetails';
 import CheckOutLayout from './component/checkout/CheckOutLayout';
 import Confirmation from './component/checkout/Confirmation';
 import Navbar from './component/global/Navbar';
+import CartMenu from './component/global/CartMenu';
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='checkout' element={<CheckOutLayout />} />
           <Route path='checkout/success' element={<Confirmation />} />
         </Routes>
+        <CartMenu />
       </BrowserRouter>
     </div>
   );
