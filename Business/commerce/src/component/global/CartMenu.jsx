@@ -41,7 +41,72 @@ const CartMenu = () => {
         top="0"
         overflow="auto"
         >
-            <Box></Box>
+            {/*overlay*/}
+            <Box
+            position="fixed"
+            right="0"
+            bottom="0"
+            width="max(400px, 30%)"
+            height="100%"
+            backgroundColo="white"
+            >
+                <Box
+                padding="30px"
+                overflow="auto"
+                height="100%"
+                >
+                    {/*header-section*/}
+                    <FlexText
+                    mb="15px"
+                    >
+                        <Typography
+                        variant='h3'
+                        >
+                            Shopping Bag({cart.length})
+                        </Typography>
+                        <IconButton onClick={() => dispatch(setCartOpen({}))}>
+                            <CloseIcon  />
+                        </IconButton>
+                    </FlexText>
+
+                    {/*cart-list*/}
+                    <Box>
+                        {cart.map((item) => (
+                            <Box key={`${item.attribute.name}-${item.id}`}>
+                                <FlexText
+                                p="15px 0"
+                                >
+                                    <Box
+                                    flex="1 1 40%"
+                                    >
+                                        <img 
+                                        alt={item?.name} 
+                                        width="123px" 
+                                        height="164px" 
+                                        src={`http://localhost:1337${item?.attribute?.image?.data?.attribute?.formats?.medium?.url}`} />
+                                    </Box>
+                                    <Box
+                                    flex="1 1 60%"
+                                    >
+                                        <FlexText
+                                        mb="5px"
+                                        >
+                                            <Typography
+                                            fontWeight="bold"
+                                            >
+                                                {item.attribute.name}
+                                            </Typography>
+                                            <IconButton
+                                            onClick={() => dispatch(removeFromCart({id: item}))}
+                                            ></IconButton>
+                                        </FlexText>
+                                    </Box>
+                                </FlexText>
+                            </Box>
+                        ))}
+                    </Box>
+                </Box>
+            </Box>
         </Box>
     )
 }
