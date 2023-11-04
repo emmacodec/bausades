@@ -19,7 +19,7 @@ export const importTexture = bringAll(
 
 const MainCarousel = () => {
 
-const NotMobile = useMediaQuery("(min-width: 600px)");
+const NotMobile = useMediaQuery("(min-width: 600px");
 
   return (
     <Carousel
