@@ -9,7 +9,7 @@ const ShoppingList = () => {
 const dispatch = useDispatch();
 const [value, setValue] = useState("all");
 const items = useSelector((state) => state.cart.items);
-const NotMobile = useMediaQuery("(min-width: 600px");
+const NotMobile = useMediaQuery("(min-width: 600px)");
 console.log("items", items);
 
 // function that handles all our tabs
@@ -32,15 +32,15 @@ useEffect(() => {
 }, []);
 
 // a function that handles all the filter
-const mostRated = items.filter(
+const mostRatedItems = items.filter(
     (item) => item.attributes.category === "topRated"
 );
 
-const newArrivals = items.filter(
+const newArrivalsItems = items.filter(
     (item) => item.attributes.category === "newArrivals"
 );
 
-const mostSellers = items.filter(
+const mostSellersItems = items.filter(
     (item) => item.attributes.category === "bestSellers"
 );
 
@@ -69,8 +69,33 @@ const mostSellers = items.filter(
         }
       }}
       >
-        <Tab></Tab>
+        <Tab label="ALL" value="all" />
+        <Tab label="NEW ARRIVALS" value="newArrivals" />
+        <Tab label="BEST SELLERS" value="bestSellers" />
+        <Tab label="TOP RATED" value="topRated" />
       </Tabs>
+
+      <Box
+      margin="0 auto"
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, 300px)"
+      justifyContent="space-around"
+      rowGap="25px"
+      columnGap="1.33%"
+      >
+        {value === "all" && items.map((item) => (
+          <Item item={item} key={`${item.name}-${item.id}`} />
+        ))}
+        {value === "newArrivals" && newArrivalsItems.map((item) => (
+          <Item item={item} key={`${item.name}-${item.id}`} />
+        ))}
+        {value === "bestSellers" && mostSellersItems.map((item) => (
+          <Item item={item} key={`${item.name}-${item.id}`} />
+        ))}
+        {value === "topRated" && mostRatedItems.map((item) => (
+          <Item item={item} key={`${item.name}-${item.id}`} />
+        ))}
+      </Box>
     </Box>
   )
 };
